@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\P2OM\\Desktop\\Desktop\\Work\\64_2\\4-SF340-TH-9.30\\Project\\Project_SF340\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+            "outputFile": "C:\\Users\\P2OM\\Desktop\\Desktop\\Work\\64_2\\4-SF340-TH-9.30\\Project\\SF340_Project\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\P2OM\\.gradle\\caches\\transforms-3\\94ecee73d302f93903038c0fd7a3667d\\transformed\\material-1.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
