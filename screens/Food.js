@@ -7,9 +7,11 @@ import Price from "./Price";
 import Calculated from "./Calculated";
 import Game from "./Game";
 
-const Food = ({navigation}) => {
+const Food = ({ route, navigation }) => {
     const [task, setTask] = useState();
     const [taskItems, setTaskItems] = useState([]);
+
+    const { name } = route.params;
 
     const handleAddTask = () => {
         Keyboard.dismiss();
@@ -36,13 +38,14 @@ const Food = ({navigation}) => {
         {/* Today's Tasks */}
         <View style={styles.tasksWrapper}>
             <Text style={styles.sectionTitle}>Food items</Text>
+            
             <View style={styles.items}>
             {/* This is where the tasks will go! */}
             {
                 taskItems.map((item, index) => {
                 return (
-                    <TouchableOpacity key={index} onPress={() => navigation.navigate('Price')} >
-                    <Foodname text={item} /> 
+                    <TouchableOpacity key={index} onPress={() => { navigation.navigate('Price', { text: item, name: name }); }} >
+                        <Foodname text={item} /> 
                     </TouchableOpacity>
                 )
                 })
@@ -65,7 +68,11 @@ const Food = ({navigation}) => {
             </View>
             </TouchableOpacity>
         </KeyboardAvoidingView>
-        
+
+        <Text>{name[0]}</Text>
+        <Text>{name[1]}</Text>
+        <Text>{name[2]}</Text>
+
         <TouchableOpacity onPress={() => navigation.navigate('Game')}>
             <Text> Game </Text>
         </TouchableOpacity>

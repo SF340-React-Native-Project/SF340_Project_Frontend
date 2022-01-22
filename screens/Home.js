@@ -40,7 +40,7 @@ const Home = ({navigation}) => {
                 nameItems.map((item, index) => {
                 return (
                     <TouchableOpacity key={index}  onPress={() => completeTask(index)}>
-                    <Name text={item} /> 
+                        <Name text={item} /> 
                     </TouchableOpacity>
                 )
                 })
@@ -58,13 +58,13 @@ const Home = ({navigation}) => {
         >
             <TextInput style={styles.input} placeholder={' Enter name'} value={name} onChangeText={text => setName(text)} />
             <TouchableOpacity onPress={() => handleAddTask()}>
-            <View style={styles.addWrapper}>
-                <Text style={styles.addText}>+</Text>
-            </View>
+                <View style={styles.addWrapper}>
+                    <Text style={styles.addText}>+</Text>
+                </View>
             </TouchableOpacity>
         </KeyboardAvoidingView>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Food')}>
+        <TouchableOpacity onPress={() => { navigation.navigate('Food', { name: nameItems }); }} >
             <Text> Next </Text>
         </TouchableOpacity>
       

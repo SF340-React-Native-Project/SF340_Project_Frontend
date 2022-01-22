@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import Welcome from './screens/Welcome'
 import Home from './screens/Home'
 import Food from './screens/Food';
 import Price from './screens/Price';
@@ -14,7 +15,8 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Screen name="Welcome" component={Welcome}/>
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="Food" component={Food}/>
         <Stack.Screen name="Price" component={Price}/>

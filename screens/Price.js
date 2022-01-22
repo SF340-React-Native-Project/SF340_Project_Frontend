@@ -3,15 +3,17 @@ import {View, Text, StyleSheet, } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
-const foodname = "beer"
+const Price = ({ route, navigation }) => {
+    const { text, name } = route.params;
 
-const Price = ({navigation}) => {
     return(
         <ScrollView>
             <View style={styles.container} >
-                <Text style={styles.sectionTitle} >Food name: {foodname}</Text>
-                
+                <Text style={styles.sectionTitle} >Food name: {text}</Text>
 
+                <Text>{name[0]}</Text>
+                <Text>{name[1]}</Text>
+                <Text>{name[2]}</Text>
 
             </View>
         </ScrollView> 
