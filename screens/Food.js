@@ -2,23 +2,25 @@ import React, {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
 
-import Name from '../components/Name';
-import Food from "./Food";
+import Foodname from '../components/Foodname';
+import Price from "./Price";
+import Calculated from "./Calculated";
+import Game from "./Game";
 
-const Home = ({navigation}) => {
-    const [name, setName] = useState();
-    const [nameItems, setNameItems] = useState([]);
+const Food = ({navigation}) => {
+    const [task, setTask] = useState();
+    const [taskItems, setTaskItems] = useState([]);
 
     const handleAddTask = () => {
         Keyboard.dismiss();
-        setNameItems([...nameItems, name])
-        setName(null);
+        setTaskItems([...taskItems, task])
+        setTask(null);
     }
 
     const completeTask = (index) => {
-        let itemsCopy = [...nameItems];
+        let itemsCopy = [...taskItems];
         itemsCopy.splice(index, 1);
-        setNameItems(itemsCopy)
+        setTaskItems(itemsCopy)
     }
 
     return (
@@ -33,14 +35,14 @@ const Home = ({navigation}) => {
 
         {/* Today's Tasks */}
         <View style={styles.tasksWrapper}>
-            <Text style={styles.sectionTitle}>Welcome to ...</Text>
+            <Text style={styles.sectionTitle}>Food items</Text>
             <View style={styles.items}>
             {/* This is where the tasks will go! */}
             {
-                nameItems.map((item, index) => {
+                taskItems.map((item, index) => {
                 return (
-                    <TouchableOpacity key={index}  onPress={() => completeTask(index)}>
-                    <Name text={item} /> 
+                    <TouchableOpacity key={index} onPress={() => navigation.navigate('Price')} >
+                    <Foodname text={item} /> 
                     </TouchableOpacity>
                 )
                 })
@@ -56,16 +58,20 @@ const Home = ({navigation}) => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.writeTaskWrapper}
         >
-            <TextInput style={styles.input} placeholder={' Enter name'} value={name} onChangeText={text => setName(text)} />
+            <TextInput style={styles.input} placeholder={' Enter name'} value={task} onChangeText={text => setTask(text)} />
             <TouchableOpacity onPress={() => handleAddTask()}>
             <View style={styles.addWrapper}>
                 <Text style={styles.addText}>+</Text>
             </View>
             </TouchableOpacity>
         </KeyboardAvoidingView>
+        
+        <TouchableOpacity onPress={() => navigation.navigate('Game')}>
+            <Text> Game </Text>
+        </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Food')}>
-            <Text> Next </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Calculated')}>
+            <Text> Calculate </Text>
         </TouchableOpacity>
       
     </View>
@@ -118,4 +124,4 @@ const styles = StyleSheet.create({
   addText: {},
 });
 
-export default Home;
+export default Food;

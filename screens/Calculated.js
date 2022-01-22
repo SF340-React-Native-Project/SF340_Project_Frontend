@@ -4,22 +4,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 import Home from "./Home";
-import Game from "./Game";
 
-const Detail = ({navigation}) => {
+const Calculated = ({navigation}) => {
     return(
         <ScrollView>
             <View>
-                <Text>DetailsScreen</Text>
+                <Text>CalculatedScreen</Text>
                 <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                    <Text>Click me to home </Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Game')}>
-                    <Text>Click me to game </Text>
+                    <Text> Exit </Text>
                 </TouchableOpacity>
             </View>
         </ScrollView> 
     )
 }
 
-export default Detail;
+export default Calculated;
