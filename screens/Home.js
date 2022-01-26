@@ -5,9 +5,11 @@ import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpaci
 import Name from '../components/Name';
 import Food from "./Food";
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
     const [name, setName] = useState();
     const [nameItems, setNameItems] = useState([]);
+
+    const dataPrice = [];
 
     const handleAddTask = () => {
         Keyboard.dismiss();
@@ -22,51 +24,51 @@ const Home = ({navigation}) => {
     }
 
     return (
-        <View style={styles.container}>
-        {/* Added this scroll view to enable scrolling when list gets longer than the page */}
-        <ScrollView
-            contentContainerStyle={{
-            flexGrow: 1
-            }}
-            keyboardShouldPersistTaps='handled'
-        >
+    <View style={styles.container}>
+      {/* Added this scroll view to enable scrolling when list gets longer than the page */}
+      <ScrollView
+          contentContainerStyle={{
+          flexGrow: 1
+          }}
+          keyboardShouldPersistTaps='handled'
+      >
 
         {/* Today's Tasks */}
         <View style={styles.tasksWrapper}>
-            <Text style={styles.sectionTitle}>Welcome to ...</Text>
+            <Text style={styles.sectionTitle}>Member</Text>
             <View style={styles.items}>
             {/* This is where the tasks will go! */}
             {
-                nameItems.map((item, index) => {
-                return (
-                    <TouchableOpacity key={index}  onPress={() => completeTask(index)}>
-                        <Name text={item} /> 
-                    </TouchableOpacity>
-                )
-                })
+              nameItems.map((item, index) => {
+              return (
+                <TouchableOpacity key={index}  onPress={() => completeTask(index)}>
+                    <Name text={item} /> 
+                </TouchableOpacity>
+              )
+              })
             }
             </View>
         </View>
-            
-        </ScrollView>
+          
+      </ScrollView>
 
-        {/* Write a task */}
-        {/* Uses a keyboard avoiding view which ensures the keyboard does not cover the items on screen */}
-        <KeyboardAvoidingView 
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={styles.writeTaskWrapper}
-        >
-            <TextInput style={styles.input} placeholder={' Enter name'} value={name} onChangeText={text => setName(text)} />
-            <TouchableOpacity onPress={() => handleAddTask()}>
-                <View style={styles.addWrapper}>
-                    <Text style={styles.addText}>+</Text>
-                </View>
-            </TouchableOpacity>
-        </KeyboardAvoidingView>
-
-        <TouchableOpacity onPress={() => { navigation.navigate('Food', { name: nameItems }); }} >
-            <Text> Next </Text>
+      {/* Write a task */}
+      {/* Uses a keyboard avoiding view which ensures the keyboard does not cover the items on screen */}
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.writeTaskWrapper}
+      >
+        <TextInput style={styles.input} placeholder={' Enter name'} value={name} onChangeText={text => setName(text)} />
+        <TouchableOpacity onPress={() => handleAddTask()}>
+            <View style={styles.addWrapper}>
+                <Text style={styles.addText}>+</Text>
+            </View>
         </TouchableOpacity>
+      </KeyboardAvoidingView>
+
+      <TouchableOpacity onPress={() => { navigation.navigate('Food', { name: nameItems, dataPrice: dataPrice }); }} >
+        <Text style={{paddingLeft: 340}}> Next </Text>
+      </TouchableOpacity>
       
     </View>
   );

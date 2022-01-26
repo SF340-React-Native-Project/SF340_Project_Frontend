@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Foodname = (props) => {
+const NameForCalculated = (props) => {
 
   return (
     <View style={styles.item}>
@@ -9,7 +9,7 @@ const Foodname = (props) => {
         <View style={styles.square}></View>
         <Text style={styles.itemText}>{props.text}</Text>
       </View>
-      <Text style={styles.itemText}>{props.price}</Text>
+      <Text>{props.price}</Text>
     </View>
   )
 }
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Foodname;
+export default NameForCalculated;
