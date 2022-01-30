@@ -10,39 +10,24 @@ const Welcome = ({navigation}) => {
     return(
         <ScrollView>
             <View style={styles.container}>
+                <ImageBackground source={require('../image/bg.jpg')} resizeMode="cover" style={styles.imagebg}>
+                    <Text style={styles.text}>Inside</Text>
 
-                <ImageBackground source={require('../bg.jpg')} resizeMode="cover" style={styles.imagebg}>
-                <Text style={styles.text}>Inside</Text>
+                    <Image
+                        style={styles.tinyLogo}
+                        source={require('../image/logo.png')}
+                    />
 
-                <Image
-                    style={styles.tinyLogo}
-                    source={require('../logo.png')}
-                />
-
-                <Text style={styles.textbut} onPress={() => navigation.navigate('Home')}> HANG OUT!  </Text>
+                    <Text style={styles.textbut} onPress={() => navigation.navigate('Home')}> HANG OUT!  </Text>
  
                 </ImageBackground>
-                
-
-
             </View>
         </ScrollView> 
     )
 }
 
 const styles = StyleSheet.create({
-    welcomebutton : {
-        width:'75%',
-        marginLeft:'12.5%',
-        borderRadius:50,
-        height:70,
-        backgroundColor:'rgb(242,197,4)',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop:225,
-        marginBottom:100,
-    },
-    textbut:{
+    textbut: {
         fontSize: 40,
         color:'rgb(255,255,255)',
         fontWeight: 'bold',
@@ -55,25 +40,21 @@ const styles = StyleSheet.create({
         textAlign:'center',
         marginTop:180,
         marginBottom:100,
-    }
-    ,
-    tinyLogo : {
-        
+    },
+    tinyLogo: {
         width:"100%",
         height:200,
         marginTop:100,
     },
-    imagebg:{
-        width: "100%",
-        height: 'auto',
-        justifyContent: 'center',
-        flex: 1,
-        marginRight:1000
+    text: {
+        fontSize: 70,
+        // fontWeight: 'bold',
+        // marginLeft: 80,
+        textAlign:'center',
+        fontFamily: 'Neonderthaw-Regular',
+        color:'#ff0072',
     },
-
-
-
-  });
+});
   
 
 export default Welcome;
