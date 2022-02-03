@@ -2,8 +2,6 @@ import React from "react";
 import { StyleSheet, Button,Image,ImageBackground, View, SafeAreaView, Text, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-
-
 import Home from "./Home";
 import { color } from "react-native-reanimated";
 
@@ -25,6 +23,11 @@ const Welcome = ({navigation}) => {
                     style={styles.label}
                     source={require('../image/label.png')}
                 />
+                <Image 
+                    style={styles.pinkbeer}
+                    source={require('../image/pinkbeer.png')}
+                />
+                
             </View>
             <View style={{flexDirection: "row"}}>
                 <Text style={styles.textbut} onPress={() => navigation.navigate('Home')}> {'HANG \nOUT!!'}  </Text>
@@ -40,7 +43,11 @@ const Welcome = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
-
+    asd : {
+        color:'rgb(242,197,4)',
+        fontFamily: 'Raleway-VariableFont',
+ 
+    },
     tinyLogo : {
         
         width:"90%",
@@ -78,21 +85,20 @@ const styles = StyleSheet.create({
         height:125,
         transform: [
         { rotate: "5deg" },
-        { translateX:95 },
-        { translateY:72 },
+        { translateX:170 },
+        { translateY:90 },
         ],
         zIndex:-1,
     },
 
     textbut:{
-            fontFamily: 'sans-serif-ligh',
+
             fontSize:40,
-            fontWeight: 'bold',
             letterSpacing: 2,
             borderRadius:25,
             height:'auto',
             color:'rgb(242,197,4)',
-            borderWidth:5,
+            borderWidth:2.5,
             borderColor:"rgb(214,28,255)",
             shadowColor: "rgb(214,28,255)",
             shadowOffset: {
@@ -106,7 +112,7 @@ const styles = StyleSheet.create({
             [
                 {translateX:15},
                 {translateY:-50},
-                {rotate: "-10deg"}
+                {rotate: "-8deg"}
             ],
             textAlign:'center',
             justifyContent: 'center',
@@ -123,9 +129,16 @@ const styles = StyleSheet.create({
         { rotate: "10deg" },
         ],
         zIndex:-1,
+    },
+    pinkbeer:{
+        width:150,
+        height:150,
+        transform: [
+            {translateY:250},
+            {translateX:-150},
+            { rotate: "-10deg" },
+            ],
     }
-
-
 
   });
   
