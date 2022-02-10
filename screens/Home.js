@@ -90,7 +90,7 @@ const Home = ({navigation}) => {
         onPress={() => {
           navigation.navigate('Food', {name: nameItems, dataPrice: dataPrice});
         }}>
-        <Text style={{paddingLeft: 340}}> Next </Text>
+        <Text style={{paddingLeft: 250 , fontSize:30}}> Next </Text>
       </TouchableOpacity>
     </View>
   );

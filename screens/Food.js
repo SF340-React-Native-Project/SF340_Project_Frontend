@@ -135,15 +135,28 @@ const Food = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E8EAED',
+    backgroundColor: 'rgb(15,35,45)',
   },
   tasksWrapper: {
     paddingTop: 15,
     paddingHorizontal: 20,
   },
   sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold'
+    marginTop:30,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    fontWeight: 'bold',
+    borderRadius: 5,
+    borderColor: '#FF3CBE',
+    borderWidth: 1,
+    color : '#FF3CBE',
+    textAlign: 'center',
+    width: 300,
+    height: 70,
+    fontSize : 45,
+    fontFamily: 'Neonderthaw-Regular',
+    shadowColor: "#A540FF",
+    elevation: 50,  
   },
   items: {
     marginTop: 30,
