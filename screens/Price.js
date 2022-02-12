@@ -53,12 +53,13 @@ const Price = ({ route, navigation }) => {
   // /Test
 
   for(let i = 0; i < name.length; i++){
-    var num = i+2;
-
-    var colorBg = 'rgba(52, 52, 52, 0.2)';
+    // var colorBg = '#EE82EE';
+    var colorBg = 'white';
+    var colorCur = '#DC143C';
 
     if(data[i+2] == 1){
-      colorBg = 'green';
+      colorBg = '#7B68EE';
+      colorCur = '#32CD32';
     };
 
     forLoopName.push(
@@ -72,11 +73,16 @@ const Price = ({ route, navigation }) => {
           justifyContent: 'space-between',
           marginBottom: 20,
         }}>
-          <View style={styles.itemLeft}>
-            <View style={styles.square}></View>
+          <View style={styles.itemLeft}>   
             <NameForPrice text={name[i]} />
           </View>
-          <View style={styles.circular}></View>
+          <View style={{width: 12,
+            height: 12,
+            borderColor: colorCur,
+            borderWidth: 3.5,
+            borderRadius: 15,}}>
+          </View>
+      
         </View>
       </TouchableOpacity>
     )
@@ -85,7 +91,7 @@ const Price = ({ route, navigation }) => {
   return(
     <ScrollView>
       <View style={styles.container} >
-        <Text style={styles.sectionTitle} > Food name: <Text style={styles.textShow}>{text}</Text>
+        <Text style={styles.sectionTitle} > Name: <Text style={styles.textShow}>{text}</Text>
         {"\n"}Price: <Text style={styles.textShow}>{showPrice}</Text></Text>
         {/* <Text style={styles.sectionTitle1} > Price: {showPrice}</Text> */}
         
@@ -93,10 +99,9 @@ const Price = ({ route, navigation }) => {
         <TextInput 
           style={styles.input} 
           placeholder='Enter amount'
+          placeholderTextColor={'white'}
           keyboardType='numeric'
           onChangeText={(val) => setPrice(val)} />
-
-
         <View style={styles.name}>
           {forLoopName}
         </View>
@@ -111,14 +116,16 @@ const Price = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   name:{
     color:'#FF3CBE',
-    // width:250,
+    borderRadius: 15,
+    // borderColor: 'black'
   },
   saveButton:{
     marginLeft: 'auto',
     marginRight: 'auto',
-    borderRadius: 5,
+    marginTop:40,
+    borderRadius: 15,
     borderColor: '#FF3CBE',
-    borderWidth: 1,
+    borderWidth: 2,
     color : '#FF3CBE',
     textAlign: 'center',
     width: 300,
@@ -129,23 +136,29 @@ const styles = StyleSheet.create({
     elevation: 50,  
   },
   textShow: {
+    fontSize:25,
     color:"#FFFFFF",
   },
   edit: {
     color: '#FF2281',
     fontSize:20,
     marginTop:40,
+    marginBottom:5,
     marginLeft:20,
+    borderStyle: 'dashed',
   },
   itemLeft: {
+    width:70,
     flexDirection: 'row',
     alignItems: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    borderRadius: 15,
   },
   square: {
+    // color: "#FFFFFF",
     width: 24,
     height: 24,
-    backgroundColor: '#55BCF6',
+    backgroundColor: '#FFFFFF',
     opacity: 0.4,
     borderRadius: 5,
     marginRight: 15,
@@ -162,40 +175,38 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(15,35,45)',
   },
   sectionTitle: {
-    fontSize: 24,
+    fontSize: 30,
     marginTop:30,
     marginLeft: 'auto',
     marginRight: 'auto',
     fontWeight: 'bold',
-    borderRadius: 5,
+    borderRadius: 15,
     borderColor: '#FF3CBE',
-    borderWidth: 1,
+    borderWidth: 4,
+    borderStyle: 'dashed',
     color : '#FF3CBE',
     textAlign: 'center',
     width: 300,
+    
+    paddingTop: 20,
+    paddingBottom: 20,
     shadowColor: "#A540FF",
     elevation: 60,  
   },
-  // sectionTitle1: {
-  //   fontSize: 18,
-  //   fontWeight: 'bold',
-  //   paddingTop: 5,
-  //   paddingLeft: 2,
-  // },
   input: {
     placeholder: "#FFFFFF",
     padding: 5,
     paddingLeft: 10,
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 40,
     marginLeft: 20,
     marginRight: 'auto',
     width: 200,
     fontWeight: 'bold',
-    borderRadius: 5,
+    borderRadius: 10,
     borderColor: '#8A2BE2',
-    borderWidth: 1,
-    color : '435',
+    borderWidth: 2,
+    color : 'white',
     textAlign: 'center',
     alignContent: 'center',
   },

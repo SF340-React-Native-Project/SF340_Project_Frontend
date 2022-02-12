@@ -102,7 +102,7 @@ const Food = ({ route, navigation }) => {
           </View>
         </View>
 
-        {forLoopData}
+        {/* {forLoopData} */}
           
       </ScrollView>
 
