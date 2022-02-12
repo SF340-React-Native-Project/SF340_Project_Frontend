@@ -60,7 +60,8 @@ const Home = ({navigation}) => {
             
             {toggle? <TouchableOpacity style={styles.toggleButton} onPress={() => settoggle(toggle ? false : true)}>
               <Text style={styles.toggleAdd}> Add Member</Text>
-            </TouchableOpacity> :<KeyboardAvoidingView
+            </TouchableOpacity> :
+            <KeyboardAvoidingView
               behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
               style={styles.writeTaskWrapper}>
               <TextInput
