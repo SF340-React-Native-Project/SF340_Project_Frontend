@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     fontSize : 45,
     fontFamily: 'Neonderthaw-Regular',
     shadowColor: "#A540FF",
-    elevation: 50,  
+    elevation: 50,
   },
   textShow: {
     fontSize:25,
@@ -156,7 +156,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   square: {
-    // color: "#FFFFFF",
     width: 24,
     height: 24,
     backgroundColor: '#FFFFFF',
