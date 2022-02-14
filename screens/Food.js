@@ -47,6 +47,8 @@ const Food = ({ route, navigation }) => {
     setTaskItems(itemsCopy)
   }
 
+  const [toggle, settoggle] = useState(true);
+
   if(dataPrice.length > 0){
     for(let i = 0; i < dataPrice.length; i++){
       const dataName = [];
@@ -76,23 +78,18 @@ const Food = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-    {/* Added this scroll view to enable scrolling when list gets longer than the page */}
       <ScrollView
           contentContainerStyle={{
           flexGrow: 1
           }}
           keyboardShouldPersistTaps='handled'
       >
-
-        {/* Today's Tasks */}
         <View style={styles.tasksWrapper}>
-          <Text style={styles.sectionTitle}>Food items</Text>
-          
+          <Text style={styles.sectionTitle}>Food Items</Text>
           <View style={styles.items}>
-          {/* This is where the tasks will go! */}
           {
               taskItems.map((item, index) => {
-              return (
+                return (
                   <TouchableOpacity key={index} onPress={() => { navigation.navigate('Price', { text: item, name: name, dataPrice: dataPrice }); }} >
                       <Foodname text={item} /> 
                   </TouchableOpacity>
@@ -101,31 +98,34 @@ const Food = ({ route, navigation }) => {
           }
           </View>
         </View>
-
-        {/* {forLoopData} */}
           
       </ScrollView>
-
-      {/* Write a task */}
-      {/* Uses a keyboard avoiding view which ensures the keyboard does not cover the items on screen */}
+     
+      {toggle? <TouchableOpacity style={styles.toggleButton} onPress={() => settoggle(toggle ? false : true)}>
+        <Text style={styles.toggleAdd}> Add Food</Text>
+      </TouchableOpacity> :
       <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
       >
-        <TextInput style={styles.input} placeholder={' Enter name'} value={task} onChangeText={text => setTask(text)} />
+        <TextInput style={styles.input} 
+          placeholder={'Enter food name'} 
+          value={task}
+          onChangeText={text => setTask(text)} 
+          />
         <TouchableOpacity onPress={() => handleAddTask()}>
         <View style={styles.addWrapper}>
           <Text style={styles.addText}>+</Text>
         </View>
         </TouchableOpacity>
-      </KeyboardAvoidingView>
+      </KeyboardAvoidingView>}
 
       <TouchableOpacity onPress={() => navigation.navigate('Game')}>
-        <Text> Game </Text>
+        <Text style={styles.Game}> Game </Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('Calculated', { name: name, dataPrice: dataPrice })}>
-        <Text style={{paddingLeft: 320}}> Calculate </Text>
+        <Text style={styles.Calculated}> Calculate </Text>
       </TouchableOpacity>
     
     </View>
@@ -133,6 +133,46 @@ const Food = ({ route, navigation }) => {
 }
 
 const styles = StyleSheet.create({
+  Game:{
+    width: '40%',
+    fontSize: 15,
+    bottom:0,
+    marginLeft: 20,
+    marginRight: 'auto',
+    fontWeight: 'bold',
+    borderRadius: 15,
+    borderColor: '#CCFF33',
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    color : '#90EE90',
+    textAlign: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
+    shadowColor: "#A540FF",
+    elevation: 60,  
+  },
+  Calculated: {
+    width: '40%',
+    fontSize: 15,
+    bottom:45,
+    marginLeft: 'auto',
+    marginRight: 20,
+    fontWeight: 'bold',
+    borderRadius: 15,
+    borderColor: '#CCFF33',
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    color : '#90EE90',
+    textAlign: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
+    shadowColor: "#A540FF",
+    elevation: 60,  
+  },
   container: {
     flex: 1,
     backgroundColor: 'rgb(15,35,45)',
@@ -142,28 +182,30 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   sectionTitle: {
+    fontSize: 30,
     marginTop:30,
     marginLeft: 'auto',
     marginRight: 'auto',
     fontWeight: 'bold',
-    borderRadius: 5,
+    borderRadius: 15,
     borderColor: '#FF3CBE',
-    borderWidth: 1,
+    borderWidth: 4,
+    borderStyle: 'dashed',
     color : '#FF3CBE',
     textAlign: 'center',
     width: 300,
-    height: 70,
-    fontSize : 45,
-    fontFamily: 'Neonderthaw-Regular',
+    paddingTop: 20,
+    paddingBottom: 20,
     shadowColor: "#A540FF",
-    elevation: 50,  
+    elevation: 60,  
   },
   items: {
+    color:'black',
     marginTop: 30,
   },
   writeTaskWrapper: {
     position: 'absolute',
-    bottom: 60,
+    bottom: 160,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -181,14 +223,41 @@ const styles = StyleSheet.create({
   addWrapper: {
     width: 60,
     height: 60,
-    backgroundColor: '#FFF',
+    color: '#0CF4FF',
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#C0C0C0',
-    borderWidth: 1,
+    borderColor: '#A540FF',
+    borderWidth: 5,
   },
-  addText: {},
+  toggleAdd:{
+    bottom: 75,
+    borderRadius: 5,
+    borderColor: '#FF3CBE',
+    borderWidth: 1,
+    color : '#FF3CBE',
+    textAlign: 'center',
+    width: 300,
+    height: 70,
+    fontSize : 45,
+    fontFamily: 'Neonderthaw-Regular',
+    shadowColor: "#A540FF",
+            shadowOffset: {
+                width: 0,
+                height: 12,
+            },
+            shadowOpacity: 5,
+            shadowRadius: 16.00,
+            elevation: 50,  
+  },
+  toggleButton:{
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  addText: {
+    fontSize: 35,
+    color: '#10FF92',
+  },
 });
 
 export default Food;

@@ -102,6 +102,7 @@ const Price = ({ route, navigation }) => {
           placeholderTextColor={'white'}
           keyboardType='numeric'
           onChangeText={(val) => setPrice(val)} />
+        
         <View style={styles.name}>
           {forLoopName}
         </View>
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     fontSize : 45,
     fontFamily: 'Neonderthaw-Regular',
     shadowColor: "#A540FF",
-    elevation: 50,  
+    elevation: 50,
   },
   textShow: {
     fontSize:25,
@@ -155,7 +156,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   square: {
-    // color: "#FFFFFF",
     width: 24,
     height: 24,
     backgroundColor: '#FFFFFF',
@@ -187,7 +187,6 @@ const styles = StyleSheet.create({
     color : '#FF3CBE',
     textAlign: 'center',
     width: 300,
-    
     paddingTop: 20,
     paddingBottom: 20,
     shadowColor: "#A540FF",
