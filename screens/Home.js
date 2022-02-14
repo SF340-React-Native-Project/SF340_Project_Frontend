@@ -36,18 +36,15 @@ const Home = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      {/* Added this scroll view to enable scrolling when list gets longer than the page */}
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
         }}
         keyboardShouldPersistTaps="handled">
-        {/* Today's Tasks */}
         <View style={styles.tasksWrapper}>
           <Text style={styles.sectionTitle}>Member</Text>
           <Text style={styles.nameText}>Name</Text>
           <View style={styles.items}>
-            {/* This is where the tasks will go! */}
             {nameItems.map((item, index) => {
               return (
                 <TouchableOpacity
@@ -57,41 +54,40 @@ const Home = ({navigation}) => {
                 </TouchableOpacity>
               );
             })}
-            
-            {toggle? <TouchableOpacity style={styles.toggleButton} onPress={() => settoggle(toggle ? false : true)}>
-              <Text style={styles.toggleAdd}> Add Member</Text>
-            </TouchableOpacity> :
-            <KeyboardAvoidingView
-              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-              style={styles.writeTaskWrapper}>
-              <TextInput
-                style={styles.input}
-                placeholder={' Enter name'}
-                value={name}
-                onChangeText={text => setName(text)}
-              />
-              <TouchableOpacity onPress={() => handleAddTask()}>
-                <View style={styles.addWrapper}>
-                  <Text style={styles.addText}>+</Text>
-                </View>
-              </TouchableOpacity>
-            </KeyboardAvoidingView>}
-            
-            
 
-            
+            {toggle ? (
+              <TouchableOpacity
+                style={styles.toggleButton}
+                onPress={() => settoggle(toggle ? false : true)}>
+                <Text style={styles.toggleAdd}> Add Member</Text>
+              </TouchableOpacity>
+            ) : (
+              <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                style={styles.writeTaskWrapper}>
+                <TextInput
+                  style={styles.input}
+                  placeholder={' Enter name'}
+                  placeholderTextColor={'#90EE90'} // *** Color ***
+                  value={name}
+                  onChangeText={text => setName(text)}
+                />
+                <TouchableOpacity onPress={() => handleAddTask()}>
+                  <View style={styles.addWrapper}>
+                    <Text style={styles.addText}>+</Text>
+                  </View>
+                </TouchableOpacity>
+              </KeyboardAvoidingView>
+            )}
           </View>
         </View>
       </ScrollView>
-
-      {/* Write a task */}
-      {/* Uses a keyboard avoiding view which ensures the keyboard does not cover the items on screen */}
 
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('Food', {name: nameItems, dataPrice: dataPrice});
         }}>
-        <Text style={{paddingLeft: 250 , fontSize:30}}> Next </Text>
+        <Text style={styles.toggleNext}> Next </Text>
       </TouchableOpacity>
     </View>
   );
@@ -100,7 +96,7 @@ const Home = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(15,35,45)',
+    backgroundColor: 'rgb(15,35,45)', // *** Color ***
   },
   tasksWrapper: {
     paddingTop: 15,
@@ -109,7 +105,10 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 30,
     fontWeight: 'bold',
-    color : 'rgb(214,28,255)',
+    color: 'rgb(214,28,255)', // *** Color ***
+    textShadowColor: '#f50abe', // *** Color ***
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 20,
   },
   items: {
     marginTop: 30,
@@ -121,55 +120,84 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    backgroundColor: '#FFF',
+    paddingHorizontal: 20,
     borderRadius: 60,
-    borderColor: '#C0C0C0',
-    borderWidth: 1,
+    borderColor: 'white', // *** Color ***
+    borderWidth: 3,
     width: 250,
+    color: '#90EE90', // *** Color ***
   },
   addWrapper: {
     width: 60,
     height: 60,
-    color: '#0CF4FF',
+    color: '#0CF4FF', // *** Color ***
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#A540FF',
+    borderColor: '#A540FF', // *** Color ***
     borderWidth: 5,
   },
   addText: {
     fontSize: 35,
-    color: '#10FF92',
+    color: '#10FF92', // *** Color ***
   },
-  toggleAdd:{
-    borderRadius: 5,
-    borderColor: '#FF3CBE',
-    borderWidth: 1,
-    color : '#FF3CBE',
+  toggleAdd: {
+    borderRadius: 15,
+    borderColor: '#FF3CBE', // *** Color ***
+    borderWidth: 2,
+    color: '#FF3CBE', // *** Color ***
     textAlign: 'center',
     width: 300,
     height: 70,
-    fontSize : 45,
+    fontSize: 45,
     fontFamily: 'Neonderthaw-Regular',
-    shadowColor: "#A540FF",
-            shadowOffset: {
-                width: 0,
-                height: 12,
-            },
-            shadowOpacity: 5,
-            shadowRadius: 16.00,
-            elevation: 50,  
+    shadowColor: '#A540FF', // *** Color ***
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 5,
+    shadowRadius: 16.0,
+    elevation: 50,
+    textShadowColor: '#f50abe', // *** Color ***
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 20,
   },
-  toggleButton:{
+  toggleButton: {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  nameText:{
-    color : '#F7FA13',
-    fontSize:20,
-  }
+  nameText: {
+    color: '#F7FA13', // *** Color ***
+    fontSize: 20,
+    textShadowColor: '#F7FA13', // *** Color ***
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 10,
+  },
+  toggleNext: {
+    borderRadius: 10,
+    borderColor: '#F7FA13', // *** Color ***
+    borderWidth: 2,
+    color: 'rgb(214,28,255)', // *** Color ***
+    textAlign: 'center',
+    fontSize: 30,
+    width: 80,
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    shadowColor: 'rgb(214,28,255)', // *** Color ***
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 5,
+    shadowRadius: 16.0,
+    elevation: 16,
+    textShadowColor: '#f50abe', // *** Color ***
+    textShadowOffset: {width: 2, height: 2},
+    textShadowRadius: 15,
+  },
 });
 
 export default Home;
