@@ -1,10 +1,11 @@
 import React from "react";
 import {View, Text, StyleSheet, } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
 
 import NameForCalculated from '../components/NameForCalculated';
 import Welcome from "./Welcome";
+import { block } from "react-native-reanimated";
 
 const Calculated = ({ route, navigation }) => {
     const { name, dataPrice } = route.params;
@@ -50,38 +51,58 @@ const Calculated = ({ route, navigation }) => {
                 <View>
                     {forLoopName}
                 </View>
-                <TouchableOpacity onPress={() => goBlack()}>
-                    <Text> Exit </Text>
-                </TouchableOpacity>
+                  <Text style={styles.toggleExit} onPress={() => goBlack()}> Exit </Text>
             </View>
         </ScrollView> 
     )
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    paddingHorizontal: 20,
+    backgroundColor: 'rgb(15,35,45)',
+    flexDirection: "column",
+    width: 400,
+    height: 720,
   },
+
   sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold'
-  },
-  sectionTitle1: {
-    fontSize: 18,
+    marginTop:30,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     fontWeight: 'bold',
-    paddingTop: 5,
-    paddingLeft: 2,
-  },
-  input: {
+    borderRadius: 5,
+    borderColor: '#FF3CBE',
     borderWidth: 1,
-    borderColor: '#777',
-    padding: 5,
-    paddingLeft: 10,
-    margin: 10,
-    width: 200,
+    color :'rgb(242,197,4)',
+    textAlign: 'center',
+    width: 300,
+    height: 70,
+    fontSize : 45,
+    fontFamily: 'Neonderthaw-Regular',
+    shadowColor: "#A540FF",
+    elevation: 50,  
+  },
+  toggleExit:{
+    position: "absolute",
+    borderRadius: 5,
+    borderColor: '#FF0000',
+    borderWidth: 1,
+    color : '#FF0000',
+    textAlign: "right",
+    fontSize : 30,
+    width : 65,
+    marginLeft: 320,
+    marginTop: 650,
+    shadowColor: "#D2691E",
+            shadowOffset: {
+                width: 0,
+                height: 12,
+            },
+            shadowOpacity: 5,
+            shadowRadius: 16.00,
+            elevation: 50,
   },
 });
-
 export default Calculated;
