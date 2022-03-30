@@ -127,7 +127,7 @@ const Price = ({route, navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 720,
+    height: 1080,
     backgroundColor: 'rgb(15,35,45)', // *** Color ***
   },
   sectionTitle: {
